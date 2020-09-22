@@ -21,7 +21,6 @@ class Todos extends React.Component {
 
   onComplete = (e, todo) => {
     e.preventDefault();
-    console.log('completed');
     this.props.onComplete(todo);
   };
 
