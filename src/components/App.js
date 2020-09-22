@@ -1,7 +1,6 @@
 import React from 'react';
 import Heading from './Heading';
 import Week from './Week';
-import './css/footer.css';
 class App extends React.Component {
   render() {
     return (
