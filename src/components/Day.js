@@ -8,14 +8,33 @@ class Day extends React.Component {
     done: [],
   };
 
-  componentDidUpdate() {
-    console.log(this.state.todo);
-  }
+  // For Debugging :
+  // componentDidUpdate() {
+  //   console.log('Todo :', this.state.todo);
+  //   console.log('Done :', this.state.done);
+  // }
 
   onTodoSubmit = (todo) => {
     if (todo.trim() !== '') {
       this.setState({ todo: [...this.state.todo, todo.trim()] });
     }
+  };
+
+  onDone = (done) => {
+    this.setState({
+      done: [...this.state.done, done],
+    });
+  };
+
+  onUndone = (todo) => {
+    this.setState({ done: this.state.done.filter((done) => done !== todo) });
+  };
+
+  onComplete = (todo) => {
+    this.setState({
+      todo: this.state.todo.filter((todos) => todos !== todo),
+      done: this.state.done.filter((done) => todo !== done),
+    });
   };
 
   render() {
@@ -27,7 +46,13 @@ class Day extends React.Component {
         >
           <div className='card-body'>
             <DayHeader onTodoSubmit={this.onTodoSubmit} day={this.props.day} />
-            <Todos todos={this.state.todo} />
+            <Todos
+              onUndone={this.onUndone}
+              onDone={this.onDone}
+              onComplete={this.onComplete}
+              todos={this.state.todo}
+              done={this.state.done}
+            />
           </div>
         </div>
       </div>
