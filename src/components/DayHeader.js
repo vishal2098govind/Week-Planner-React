@@ -17,7 +17,6 @@ class DayHeader extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.todo);
     this.props.onTodoSubmit(this.state.todo);
     this.setState({ todo: '' });
   };
